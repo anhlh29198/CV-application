@@ -69,7 +69,7 @@ button {
   color: #fff;
   border-radius: 1rem;
   box-shadow: 3px 1px 10px #000000;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .delete-btn {
@@ -87,12 +87,12 @@ button {
 
 #template-personal {
   background-color: #000057;
-  padding: 2rem;
+  padding: 2rem 3rem;
   color: #fff;
 }
 
 #template-resume {
-  padding: 2rem;
+  padding: 2rem 1rem;
 }
 
 #sample-info {

@@ -1,45 +1,27 @@
-import { useState } from 'react';
+import { handleInputChange } from '../../../asset components/handleInputChange';
 
-const personalInputData = [
-  { title: 'First Name', value: 'John', type: 'text', id: 0 },
-  { title: 'Last Name', value: 'Doe', type: 'text', id: 1 },
-  { title: 'Email', value: 'john@example.com', type: 'email', id: 2 },
-  { title: 'Phone', value: '12345678', type: 'tel', id: 3 },
-  { title: 'Address', value: 'Somewhere', type: 'text', id: 4 },
-];
-
-export function Si_g_input() {
-  const [inputData, setInputData] = useState(personalInputData);
-
-  function handleInputChange(e, id) {
-    setInputData(
-      inputData.map((data) => {
-        if (data.id === id) {
-          return { ...data, value: e.target.value };
-        } else {
-          return data;
-        }
-      })
-    );
-  }
-
+export function Si_g_input({ data, setData }) {
+  const inputData = data.map((entry) => entry.data)[0];
+  const setInputData = setData.map((entry) => entry.func)[0];
   return (
     <div id="personal">
       <h4>Personal</h4>
       <ul className="grid">
-        {inputData.map((data) => (
+        {inputData.map((entry) => (
           <li
             className={
-              data.title === 'Address' ? 'grid-items gd-col-sp-2' : 'grid-items'
+              entry.title === 'Address'
+                ? 'grid-items gd-col-sp-2'
+                : 'grid-items'
             }
-            key={data.id}
+            key={entry.id}
           >
-            <label>{data.title}</label>
+            <label>{entry.title}</label>
             <input
-              type={data.type}
-              value={data.title === 'Phone' ? '+' + data.value : data.value}
+              type={entry.type}
+              value={entry.value}
               onChange={(e) => {
-                handleInputChange(e, data.id);
+                handleInputChange(e, entry.id, inputData, setInputData);
               }}
             />
           </li>

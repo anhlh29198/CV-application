@@ -1,39 +1,21 @@
-import { useState } from 'react';
+import { handleInputChange } from '../../../../../asset components/handleInputChange';
 
-const skillsData = [
-  { title: 'Skill', value: '', type: 'text', id: 0 },
-  { title: 'Level', value: 'default', type: '', id: 1 },
-];
-
-export function Si_d_skills_components() {
-  const [inputData, setInputData] = useState(skillsData);
-
-  function handleInputData(e, id) {
-    setInputData(
-      inputData.map((data) => {
-        if (data.id === id) {
-          return {
-            ...data,
-            value: e.target.value,
-          };
-        } else {
-          return data;
-        }
-      })
-    );
-  }
-
+export function Si_d_skills_components({ data, setData }) {
+  const inputData = data.map((entry) => entry.data)[0];
+  const setInputData = setData.map((entry) => entry.func)[0];
   return (
     <>
       <ul className="grid">
-        {inputData.map((data) => (
-          <li className="grid-items" key={data.id}>
-            <label htmlFor="">{data.title}</label>
+        {inputData.map((entry) => (
+          <li className="grid-items" key={entry.id}>
+            <label htmlFor="">{entry.title}</label>
             <>
-              {data.title === 'Level' ? (
+              {entry.title === 'Level' ? (
                 <select
-                  value={data.value}
-                  onChange={(e) => handleInputData(e, data.id)}
+                  value={entry.value}
+                  onChange={(e) =>
+                    handleInputChange(e, entry.id, inputData, setInputData)
+                  }
                 >
                   <option value="default">Select level</option>
                   <option value="expert">Expert</option>
@@ -44,9 +26,11 @@ export function Si_d_skills_components() {
                 </select>
               ) : (
                 <input
-                  type={data.type}
-                  value={data.value}
-                  onChange={(e) => handleInputData(e, data.id)}
+                  type={entry.type}
+                  value={entry.value}
+                  onChange={(e) =>
+                    handleInputChange(e, entry.id, inputData, setInputData)
+                  }
                 />
               )}
             </>

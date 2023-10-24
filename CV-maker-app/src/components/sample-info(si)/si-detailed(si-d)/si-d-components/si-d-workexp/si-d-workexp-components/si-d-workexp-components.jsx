@@ -1,59 +1,39 @@
-import { useState } from 'react';
+import { handleInputChange } from '../../../../../asset components/handleInputChange';
 
-const workexpData = [
-  { title: 'Job Title', value: '', type: 'text', id: 0 },
-  { title: 'City/Town', value: '', type: 'text', id: 1 },
-  { title: 'Employer', value: '', type: 'text', id: 2 },
-  { title: 'Start Date', value: '2022-10', type: 'month', id: 3 },
-  { title: 'End Date', value: '2023-04', type: 'month', id: 4 },
-  { title: 'Description', value: '', type: '', id: 5 },
-];
-
-export function Si_d_workexp_components() {
-  const [inputData, setInputData] = useState(workexpData);
-
-  function handleInputChange(e, id) {
-    setInputData(
-      inputData.map((data) => {
-        if (data.id === id) {
-          return {
-            ...data,
-            value: e.target.value,
-          };
-        } else {
-          return data;
-        }
-      })
-    );
-  }
-
+export function Si_d_workexp_components({ data, setData }) {
+  const inputData = data.map((entry) => entry.data)[0];
+  const setInputData = setData.map((entry) => entry.func)[0];
   return (
     <ul className="grid">
-      {inputData.map((data) => (
+      {inputData.map((entry) => (
         <li
           className={
-            data.title === 'Employer' || data.title === 'Description'
+            entry.title === 'Employer' || entry.title === 'Description'
               ? 'grid-items gd-col-sp-2'
               : 'grid-items'
           }
-          key={data.id}
+          key={entry.id}
         >
-          <label htmlFor="">{data.title}</label>
+          <label htmlFor="">{entry.title}</label>
           <>
-            {data.title === 'Description' ? (
+            {entry.title === 'Description' ? (
               <textarea
                 name=""
                 id=""
                 cols="30"
                 rows="10"
-                value={data.value}
-                onChange={(e) => handleInputChange(e, data.id)}
+                value={entry.value}
+                onChange={(e) =>
+                  handleInputChange(e, entry.id, inputData, setInputData)
+                }
               ></textarea>
             ) : (
               <input
-                type={data.type}
-                value={data.value}
-                onChange={(e) => handleInputChange(e, data.id)}
+                type={entry.type}
+                value={entry.value}
+                onChange={(e) =>
+                  handleInputChange(e, entry.id, inputData, setInputData)
+                }
               />
             )}
           </>
