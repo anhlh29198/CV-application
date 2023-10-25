@@ -1,9 +1,15 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export const personalInputData = [
   { title: 'First Name', value: 'John', type: 'text', id: 0 },
   { title: 'Last Name', value: 'Doe', type: 'text', id: 1 },
   { title: 'Email', value: 'john@example.com', type: 'email', id: 2 },
   { title: 'Phone', value: '12345678', type: 'tel', id: 3 },
   { title: 'Address', value: 'Castle in the sky', type: 'text', id: 4 },
+];
+
+export const descriptionData = [
+  { title: 'Description', value: '', type: '', id: 0 },
 ];
 
 export const educationData = [
@@ -30,4 +36,26 @@ export const workexpData = [
 export const skillsData = [
   { title: 'Skill', value: 'Fucking around', type: 'text', id: 0 },
   { title: 'Level', value: 'beginner', type: '', id: 1 },
+];
+
+export const shits = [
+  { id: uuidv4(), title: 'first', value: 'shit' },
+  { id: uuidv4(), title: 'second', value: 'balls' },
+];
+
+export const shit = [
+  {
+    id: uuidv4(),
+    data: [
+      { id: uuidv4(), title: 'first', value: 'shit' },
+      { id: uuidv4(), title: 'second', value: 'balls' },
+    ],
+  },
+  {
+    id: uuidv4(),
+    data: [
+      { id: uuidv4(), title: 'first', value: 'shit' },
+      { id: uuidv4(), title: 'second', value: 'balls' },
+    ],
+  },
 ];

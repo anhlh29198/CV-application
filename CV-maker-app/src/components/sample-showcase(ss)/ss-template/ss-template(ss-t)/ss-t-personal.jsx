@@ -14,7 +14,7 @@ export function Ss_t_personal({ data }) {
         </li>
         <li>
           <h4>Phone</h4>
-          <p>{'+' + inputData[3].value}</p>
+          <p>{inputData[3].value}</p>
         </li>
         <li>
           <h4>Address</h4>

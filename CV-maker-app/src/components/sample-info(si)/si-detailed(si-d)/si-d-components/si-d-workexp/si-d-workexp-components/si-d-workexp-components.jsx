@@ -1,6 +1,6 @@
 import { handleInputChange } from '../../../../../asset components/handleInputChange';
 
-export function Si_d_workexp_components({ data, setData }) {
+export function Si_d_workexp_components({ data, setData, isEdit }) {
   const inputData = data.map((entry) => entry.data)[0];
   const setInputData = setData.map((entry) => entry.func)[0];
   return (
@@ -18,6 +18,7 @@ export function Si_d_workexp_components({ data, setData }) {
           <>
             {entry.title === 'Description' ? (
               <textarea
+                disabled={!isEdit}
                 name=""
                 id=""
                 cols="30"
@@ -29,6 +30,7 @@ export function Si_d_workexp_components({ data, setData }) {
               ></textarea>
             ) : (
               <input
+                disabled={!isEdit}
                 type={entry.type}
                 value={entry.value}
                 onChange={(e) =>

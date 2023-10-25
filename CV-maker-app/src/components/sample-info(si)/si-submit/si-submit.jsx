@@ -1,7 +1,13 @@
-export function Si_submit() {
+export function Si_submit({ isEdit, setIsEdit }) {
   return (
     <>
-      <button id="submit-button">Submit</button>
+      <button
+        disabled={!isEdit}
+        onClick={() => setIsEdit(false)}
+        id="submit-button"
+      >
+        Submit
+      </button>
     </>
   );
 }

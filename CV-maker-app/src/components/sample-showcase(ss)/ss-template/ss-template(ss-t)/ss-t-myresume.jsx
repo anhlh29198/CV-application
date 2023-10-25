@@ -20,7 +20,7 @@ export function Ss_t_myresume({ data }) {
       <hr></hr>
       <ul className="fx-col">
         <li>
-          <p>{description}</p>
+          <p>{description[0].value}</p>
         </li>
         <li>
           <h4>WORK EXPERIENCE</h4>

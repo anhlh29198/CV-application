@@ -1,6 +1,6 @@
 import { handleInputChange } from '../../../../../asset components/handleInputChange';
 
-export function Si_d_skills_components({ data, setData }) {
+export function Si_d_skills_components({ data, setData, isEdit }) {
   const inputData = data.map((entry) => entry.data)[0];
   const setInputData = setData.map((entry) => entry.func)[0];
   return (
@@ -12,6 +12,7 @@ export function Si_d_skills_components({ data, setData }) {
             <>
               {entry.title === 'Level' ? (
                 <select
+                  disabled={!isEdit}
                   value={entry.value}
                   onChange={(e) =>
                     handleInputChange(e, entry.id, inputData, setInputData)
@@ -26,6 +27,7 @@ export function Si_d_skills_components({ data, setData }) {
                 </select>
               ) : (
                 <input
+                  disabled={!isEdit}
                   type={entry.type}
                   value={entry.value}
                   onChange={(e) =>
